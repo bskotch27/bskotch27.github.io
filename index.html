@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Srikanth Prasad J</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #003262; /* Berkeley blue */
+      --gold:    #FDB515; /* Berkeley gold */
+      --text:    #1a1a1a;
+      --muted:   #555;
+      --border:  #e0e0e0;
+      --bg:      #fafafa;
+    }
+
+    body {
+      font-family: "Georgia", serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--blue);
+      color: #fff;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      letter-spacing: .04em;
+      margin-bottom: .35rem;
+    }
+    header .subtitle {
+      font-size: 1rem;
+      color: var(--gold);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    header .contact {
+      font-size: .9rem;
+      color: #cdd9e5;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .4rem 1.5rem;
+    }
+    header .contact a {
+      color: #cdd9e5;
+      text-decoration: none;
+    }
+    header .contact a:hover { color: var(--gold); }
+
+    /* ── Nav ── */
+    nav {
+      background: #fff;
+      border-bottom: 3px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    nav ul li a {
+      display: block;
+      padding: .75rem 1.4rem;
+      text-decoration: none;
+      font-family: "Arial", sans-serif;
+      font-size: .85rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      transition: background .2s, color .2s;
+    }
+    nav ul li a:hover {
+      background: var(--blue);
+      color: var(--gold);
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: "Arial", sans-serif;
+      font-size: 1rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: .3rem;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ── About ── */
+    #about p {
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    /* ── Education ── */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: .1rem;
+      margin-bottom: 1rem;
+    }
+    .edu-item .degree {
+      font-weight: bold;
+    }
+    .edu-item .institution {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .edu-item .year {
+      font-family: "Arial", sans-serif;
+      font-size: .85rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Papers ── */
+    .paper {
+      margin-bottom: 1.2rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--gold);
+    }
+    .paper .title {
+      font-style: italic;
+    }
+    .paper .coauthors {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-top: .15rem;
+    }
+
+    /* ── Experience ── */
+    .exp-item {
+      margin-bottom: 1.5rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .1rem;
+    }
+    .exp-header .role {
+      font-weight: bold;
+    }
+    .exp-header .year {
+      font-family: "Arial", sans-serif;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+    .exp-item .org {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: .3rem;
+    }
+    .exp-item ul {
+      padding-left: 1.2rem;
+      font-size: .95rem;
+    }
+    .exp-item ul li { margin-bottom: .2rem; }
+
+    /* ── References ── */
+    .ref-item {
+      margin-bottom: 1rem;
+    }
+    .ref-item .name { font-weight: bold; }
+    .ref-item .details { font-size: .9rem; color: var(--muted); }
+    .ref-item a { color: var(--blue); text-decoration: none; }
+    .ref-item a:hover { text-decoration: underline; }
+
+    /* ── CV link ── */
+    .cv-link {
+      display: inline-block;
+      margin-top: .5rem;
+      padding: .55rem 1.4rem;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Arial", sans-serif;
+      font-size: .85rem;
+      letter-spacing: .05em;
+      border-radius: 2px;
+      transition: background .2s;
+    }
+    .cv-link:hover { background: #004a8f; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-family: "Arial", sans-serif;
+      font-size: .8rem;
+      color: #999;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      .edu-item, .exp-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Srikanth Prasad J</h1>
+  <p class="subtitle">PhD Candidate · Haas School of Business, UC Berkeley</p>
+  <div class="contact">
+    <span>2220 Piedmont Ave, F433 · Berkeley, CA 94720</span>
+    <a href="tel:+15105705773">+1 510-570-5773</a>
+    <a href="mailto:srikanth_prasad@berkeley.edu">srikanth_prasad@berkeley.edu</a>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am a PhD candidate in Management of Organizations at the Haas School of Business,
+      UC Berkeley. My research sits at the intersection of innovation, organizations, and
+      technology — with a focus on how AI tools reshape knowledge production and how
+      institutional transitions affect inventor performance. Before academia, I worked in
+      product management and public policy across India and Europe.
+    </p>
+    <br>
+    <a class="cv-link" href="Resume_srikanth (1).pdf" target="_blank">Download CV (PDF)</a>
+  </section>
+
+  <!-- Research -->
+  <section id="research">
+    <h2>Working Papers</h2>
+
+    <div class="paper">
+      <div class="title">Impact of AI Assistance Tools on Knowledge Production in Open-Source Communities</div>
+      <div class="coauthors">with Abhishek Nagaraj and Eunae Yoo</div>
+    </div>
+
+    <div class="paper">
+      <div class="title">Does Shuffling the Cards Reduce Gender Disparities in Innovation? Investigating Inventor Performance in M&amp;A Contexts</div>
+      <div class="coauthors">with Deepak Jena</div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="edu-item">
+      <div>
+        <div class="degree">PhD in Management of Organizations</div>
+        <div class="institution">Haas School of Business, UC Berkeley</div>
+      </div>
+      <div class="year">2023 – Present</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="degree">MSc in International Management (CEMS)</div>
+        <div class="institution">Bocconi University</div>
+      </div>
+      <div class="year">2018 – 2020</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="degree">MBA</div>
+        <div class="institution">Indian Institute of Management (IIM) Calcutta</div>
+      </div>
+      <div class="year">2017 – 2019</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="degree">B.Tech in Engineering Design</div>
+        <div class="institution">Indian Institute of Technology (IIT) Madras</div>
+      </div>
+      <div class="year">2008 – 2013</div>
+    </div>
+  </section>
+
+  <!-- Teaching -->
+  <section id="teaching">
+    <h2>Teaching Experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="role">Research Associate (Strategy)</span>
+        <span class="year">2021 – 2023</span>
+      </div>
+      <div class="org">Indian School of Business, Hyderabad</div>
+      <ul>
+        <li>Assisted in material preparation, slide creation, and in-class observations for the <em>Philosophy of Science</em> course in the Executive MBA program.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="role">Teaching Assistant – Machine Drawing</span>
+        <span class="year">2012</span>
+      </div>
+      <div class="org">IIT Madras (Undergraduate Course)</div>
+      <ul>
+        <li>Conducted lab sessions, graded assignments, and assisted with in-class instruction.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="role">Teaching Coordinator</span>
+        <span class="year">2008 – 2010</span>
+      </div>
+      <div class="org">National Social Service – IIT Madras</div>
+      <ul>
+        <li>Designed and taught an Olympiad-focused curriculum in Math and Science to 9th-grade students from underprivileged backgrounds.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Professional Experience -->
+  <section id="experience">
+    <h2>Professional Experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="role">Product Manager</span>
+        <span class="year">2019 – 2021</span>
+      </div>
+      <div class="org">Play Simple Games, Bangalore</div>
+      <ul>
+        <li>Led a team of 20 managing <em>Word Trip</em>, a game app with 500K+ daily active users and $70K+ daily revenue. Awarded Academic's Choice MindSpring for best educational game.</li>
+        <li>Implemented 10+ features via data-driven research and A/B testing, boosting LTV by 4%.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="role">Policy Assistant</span>
+        <span class="year">2015 – 2017</span>
+      </div>
+      <div class="org">Ministry of Human Resources, Government of India, Delhi</div>
+      <ul>
+        <li>Managed administrative concerns and policies for 3,237 national schools.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- References -->
+  <section id="references">
+    <h2>References</h2>
+    <div class="ref-item">
+      <div class="name">Abhishek Nagaraj</div>
+      <div class="details">
+        Associate Professor, Haas School of Business ·
+        <a href="mailto:nagaraj@berkeley.edu">nagaraj@berkeley.edu</a> ·
+        <a href="https://abhishekn.com" target="_blank" rel="noopener">abhishekn.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Srikanth Prasad J · Built with GitHub Pages
+</footer>
+
+</body>
+</html>
