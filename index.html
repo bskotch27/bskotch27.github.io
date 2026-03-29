@@ -109,9 +109,25 @@
     }
 
     /* ── About ── */
+    #about .about-inner {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    #about .about-inner img {
+      width: 200px;
+      min-width: 160px;
+      border-radius: 4px;
+      object-fit: cover;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+    }
     #about p {
       font-size: 1.05rem;
       color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      #about .about-inner { flex-direction: column; align-items: center; }
+      #about .about-inner img { width: 160px; }
     }
 
     /* ── Education ── */
@@ -250,15 +266,20 @@
   <!-- About -->
   <section id="about">
     <h2>About</h2>
-    <p>
-      I am a PhD candidate in Management of Organizations at the Haas School of Business,
-      UC Berkeley. My research sits at the intersection of innovation, organizations, and
-      technology — with a focus on how AI tools reshape knowledge production and how
-      institutional transitions affect inventor performance. Before academia, I worked in
-      product management and public policy across India and Europe.
-    </p>
-    <br>
-    <a class="cv-link" href="Resume_srikanth (1).pdf" target="_blank">Download CV (PDF)</a>
+    <div class="about-inner">
+      <img src="photo.jpg" alt="Srikanth Prasad J" />
+      <div>
+        <p>
+          I am a PhD candidate in Management of Organizations at the Haas School of Business,
+          UC Berkeley. My research sits at the intersection of innovation, organizations, and
+          technology — with a focus on how AI tools reshape knowledge production and how
+          institutional transitions affect inventor performance. Before academia, I worked in
+          product management and public policy across India and Europe.
+        </p>
+        <br>
+        <a class="cv-link" href="Resume_srikanth (1).pdf" target="_blank">Download CV (PDF)</a>
+      </div>
+    </div>
   </section>
 
   <!-- Research -->
