@@ -1,0 +1,13 @@
+# main links
+main:
+  - title: "Research"
+    url: /research/
+
+  - title: "CV"
+    url: /files/CV_Srikanth.pdf
+
+  - title: "Teaching"
+    url: /teaching/
+
+  - title: "Blog"
+    url: /blog/
