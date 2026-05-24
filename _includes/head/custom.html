@@ -2,6 +2,18 @@
 
 <!-- start custom head snippets -->
 
+<!-- Open Graph image (the theme's seo.html doesn't emit og:image from site.og_image, only twitter:image) -->
+{% if site.og_image %}
+  {% assign _og = site.og_image | prepend: "/images/" | prepend: base_path %}
+  <meta property="og:image" content="{{ _og }}">
+  <meta property="og:image:secure_url" content="{{ _og }}">
+  <meta property="og:image:width" content="1254">
+  <meta property="og:image:height" content="1254">
+  <meta property="og:image:alt" content="{{ site.author.name }}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+{% endif %}
+
 <!-- Fonts: Space Grotesk (headings) + Inter (body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
