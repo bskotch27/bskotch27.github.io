@@ -3,6 +3,37 @@
 {% if page.author_profile or layout.author_profile or page.sidebar %}
   <div class="sidebar sticky">
   {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
+  {% if page.author_profile or layout.author_profile %}
+    <div class="contact-icons" aria-label="Contact">
+      {% if site.author.email %}
+      <a href="mailto:{{ site.author.email }}" aria-label="Email" title="Email">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="3"/>
+          <path d="M3.6 6.5 L12 13 L20.4 6.5"/>
+        </svg>
+      </a>
+      {% endif %}
+      {% if site.author.github %}
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.86 2.84 1.32 3.53 1.01.11-.79.42-1.32.77-1.62-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      {% endif %}
+      {% if site.author.linkedin %}
+      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.881 3.87 6 2.5 6S.02 4.881.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v13.5H.22V8zm7.6 0h4.38v1.85h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.48 3.04 5.48 6.99V21.5h-4.56v-6.31c0-1.5-.03-3.44-2.1-3.44-2.1 0-2.42 1.64-2.42 3.33V21.5H7.82V8z"/></svg>
+      </a>
+      {% endif %}
+    </div>
+    <nav class="sidebar-nav" aria-label="Site">
+      <ul>
+        <li><a href="{{ base_path }}/" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+        {% for link in site.data.navigation.main %}
+          {% if link.url contains 'http' %}{% assign domain = '' %}{% else %}{% assign domain = base_path %}{% endif %}
+          <li><a href="{{ domain }}{{ link.url }}" {% if page.url contains link.url and link.url != '/' %}class="active"{% endif %}>{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
   {% if page.sidebar %}
     {% for s in page.sidebar %}
       {% if s.image %}

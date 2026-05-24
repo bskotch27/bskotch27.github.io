@@ -1,0 +1,219 @@
+/* =============================================================
+   Lev-style redesign — custom overrides (loaded after main.css)
+   Left sidebar (cartoon photo · name · nav · contact) + content.
+   Darumadrop One name · Space Grotesk headings · Inter body · jacket-blue accent.
+   ============================================================= */
+
+/* Self-hosted Darumadrop One (bulletproof — no dependency on Google Fonts at runtime) */
+@font-face {
+  font-family: 'Darumadrop One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/darumadrop-one.woff2') format('woff2');
+}
+
+:root {
+  --accent:        #284070;   /* jacket blue, sampled from the illustration */
+  --accent-hover:  #1b2e54;
+  --ink:           #23262b;
+  --muted:         #6b7079;
+  --hair:          #e7e8ea;
+  --bg:            #fcfcfd;
+
+  --global-bg-color:                  var(--bg);
+  --global-footer-bg-color:           var(--bg);
+  --global-text-color:                var(--ink);
+  --global-text-color-light:          var(--muted);
+  --global-base-color:                var(--accent);
+  --global-link-color:                var(--accent);
+  --global-link-color-hover:          var(--accent-hover);
+  --global-link-color-visited:        var(--accent);
+  --global-border-color:              var(--hair);
+  --global-dark-border-color:         var(--hair);
+}
+
+/* ---------- Base typography ----------------------------------- */
+html { font-size: 18px; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6, .page__title, .archive__item-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.22;
+}
+a, a:visited { color: var(--accent); text-decoration: none; }
+.page__content a:not(.btn) { border-bottom: 1px solid rgba(40,64,112,0.28); }
+.page__content a:not(.btn):hover { color: var(--accent-hover); border-bottom-color: var(--accent); }
+
+/* ---------- Hide the top masthead (nav lives in the sidebar) -- */
+.masthead { display: none !important; }
+
+/* ---------- Two-column layout: sticky left sidebar + content -- */
+#main {
+  display: flex;
+  align-items: flex-start;
+  gap: 3.5rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 2rem;
+}
+.sidebar, .sidebar.sticky {
+  float: none !important;
+  width: 210px !important;
+  flex: 0 0 210px;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  position: sticky;
+  top: 2.5rem;
+  font-size: 1rem;
+}
+#main > .page {
+  float: none !important;
+  width: auto !important;
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0;
+}
+.page__inner-wrap { margin: 0; max-width: 40rem; }
+
+/* ---------- Sidebar: profile block --------------------------- */
+.sidebar > div[itemscope] { display: block; }
+.author__avatar { width: auto; margin: 0; }
+.author__avatar img {
+  width: 150px; height: auto;
+  border-radius: 16px;
+  max-width: 100%;
+  padding: 0; border: 0;
+  display: block;
+}
+.sidebar .author__content { margin: 1rem 0 0; padding: 0; }
+.sidebar .author__name {
+  font-family: 'Darumadrop One', 'Space Grotesk', sans-serif !important;
+  font-size: 1.75rem !important;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+  color: var(--accent);
+  margin: 0;
+}
+.sidebar .author__bio {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--muted);
+  font-size: 0.86rem !important;
+  line-height: 1.45;
+  margin: 0.5rem 0 0;
+}
+
+/* ---------- Sidebar: vertical nav ---------------------------- */
+.sidebar .sidebar-nav { margin: 1.5rem 0 0; }
+.sidebar .sidebar-nav ul { list-style: none; margin: 0; padding: 0; }
+.sidebar .sidebar-nav li { margin: 0 0 0.55rem; font-size: 1rem; }
+.sidebar .sidebar-nav a {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 0.98rem !important;
+  font-weight: 500;
+  color: var(--ink);
+  border: 0;
+}
+.sidebar .sidebar-nav a:hover { color: var(--accent); }
+.sidebar .sidebar-nav a.active { color: var(--accent); font-weight: 600; }
+
+/* ---------- Sidebar: contact icons (Email · GitHub · LinkedIn) */
+.author__urls-wrapper { display: none !important; }   /* hide old vertical list */
+
+.contact-icons {
+  display: flex;
+  gap: 0.55rem;
+  margin: 1.4rem 0 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid var(--hair);
+}
+.contact-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: rgba(40,64,112,0.08);
+  color: var(--accent);
+  border: 0 !important;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.contact-icons a:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.contact-icons svg { display: block; }
+
+/* ---------- Main content ------------------------------------- */
+.page__content { font-size: 1rem; }
+.page__content > p:first-child { margin-top: 0; }
+.page__content p { margin: 0 0 1.2em; }
+
+.page__title { font-size: 2rem; font-weight: 700; margin: 0 0 1rem; line-height: 1.15; }
+.page__title a { color: var(--ink); border: 0; }
+
+.page__content h1 { font-size: 1.9rem; margin: 1.8em 0 0.6em; }
+.page__content h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 2.2em 0 0.8em;
+  padding-top: 1.1em;
+  border-top: 1px solid var(--hair);
+}
+.page__content h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.page__content h3 { font-size: 1.12rem; margin: 1.6em 0 0.5em; }
+.page__content ul, .page__content ol { margin: 0 0 1.2em; padding-left: 1.2em; }
+.page__content li { margin-bottom: 0.4em; }
+
+.archive__item { margin-bottom: 1.6em; }
+.archive__item-title { margin: 0 0 0.2em; font-size: 1.15rem; }
+.archive__item-excerpt { color: var(--muted); margin: 0; }
+
+/* ---------- Page meta / share clutter ------------------------ */
+.page__meta, .page__share, .page__taxonomy { display: none; }
+
+/* ---------- Footer ------------------------------------------- */
+.page__footer {
+  background: var(--bg);
+  border-top: 1px solid var(--hair);
+  color: var(--muted);
+  margin-top: 4rem;
+}
+.page__footer footer {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1.6rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+}
+.page__footer a, .page__footer a:visited { color: var(--muted); }
+.page__footer a:hover { color: var(--accent); }
+.page__footer .page__footer-follow { display: none; }   /* hide duplicate follow row */
+
+/* ---------- Responsive: stack on small screens --------------- */
+@media (max-width: 47rem) {
+  #main { flex-direction: column; gap: 2rem; padding: 2rem 1.4rem; }
+  .sidebar, .sidebar.sticky { width: 100% !important; flex: 1 1 100%; position: static; top: auto; }
+  .sidebar > div[itemscope] { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+  .author__avatar img { width: 110px; }
+  .author__content { margin: 0; flex: 1 1 12rem; }
+  .author__urls-wrapper, .sidebar-nav { flex: 1 1 100%; }
+  .sidebar-nav ul { display: flex; flex-wrap: wrap; gap: 0.4rem 1.3rem; }
+  .sidebar-nav li { margin: 0; }
+  .author__urls-wrapper { border-top: 0; padding-top: 0.6rem; }
+  .page__inner-wrap { max-width: none; }
+}
+
+/* ---------- Light-only: hide dark-mode toggle ---------------- */
+#theme-toggle { display: none !important; }

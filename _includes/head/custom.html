@@ -2,6 +2,14 @@
 
 <!-- start custom head snippets -->
 
+<!-- Fonts: Space Grotesk (headings) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Self-hosted Darumadrop One — preloaded so the name font is ready immediately -->
+<link rel="preload" as="font" type="font/woff2" href="{{ base_path }}/assets/fonts/darumadrop-one.woff2" crossorigin>
+
 <!-- Support for Academicons -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
@@ -13,5 +21,8 @@
 <link rel="manifest" href="{{ base_path }}/images/manifest.json"/>
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="#ffffff"/>
+
+<!-- Custom redesign overrides (Modern Grotesk) — must load AFTER main.css -->
+<link rel="stylesheet" href="{{ base_path }}/assets/css/custom.css?v=3"/>
 
 <!-- end custom head snippets -->
